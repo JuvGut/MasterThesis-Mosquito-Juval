@@ -1,0 +1,12 @@
+# Train, val, test image folders, labels have to be structured the same, but it finds them automatically
+train: /home/juval.gutknecht/Mosquito_Detection/data/mosquito detection dataset/images/train
+val: /home/juval.gutknecht/Mosquito_Detection/data/mosquito detection dataset/images/val
+test: /home/juval.gutknecht/Mosquito_Detection/data/mosquito detection dataset/images/test # optional
+
+# Number of classes
+nc: 2
+
+# Classes
+names:
+  0: Mosquito
+  1: Other Insect
