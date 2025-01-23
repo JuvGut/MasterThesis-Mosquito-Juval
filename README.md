@@ -1,3 +1,54 @@
+# Mosquito Detection and Classification Using Deep Learning
+## Master's Thesis by Juval Gutknecht
+
+__*Original Title: Deep Learning for Automatization of Video-Analysis for Malaria Vector Behavioral Studies*__
+
+Department of Biomedical Engineering, University of Basel\
+Center for Medical Image Analysis and Navigation (CIAN)
+
+
+Malaria is caused by a parasite that is transmitted through the bite of infected mosquitoes. In 2022, about 249 million cases of malaria were recorded. If untreated, malaria can cause death, and this happened to 608’000 people in 2022 (1). Most of them were children in sub-Saharan Africa, where treatment is not readily available. The goal of this master thesis was to develop a series of Deep Learning models to support mosquito behavioral studies and vector control strategies, particularly through the use of attractive toxic sugar baits (ATSB). These baits attract mosquitoes, which consume the toxic sugar, fly off, and ultimately die due to the mosquitocidal properties of the ingested solution (2). The data consisted of 24-hour series of images of the ATSBs taken every minute in daylight and infrared mode and labels indicating whether mosquitoes were present, and if so what their gender and species were. Using this data, a series of models were trained to solve two tasks: mosquito detection and mosquito classification. First, an Inception-ResNet-v2 was deployed as a binary classifier on the pre-processed image series, which included an extra background subtracted channel. The resulting model achieved F1 scores up to 0.93 on the test set. For the second task, the background-subtracted images were employed to generate bounding box labels. This enabled the training of a YOLOv8 model for insect detection. Its training was successful, as it reached F1 scores up to 0.83 on the test set. Finally, a second YOLOv8 model was developed that could tackle both the mosquito detection and species and sex classification tasks. This last model reached F1 scores of up to 0.9. This limited performance might be due to the small size of the dataset (126 images, highest class 109 instances, lowest class 3 instances). The results of all the models are promising for the automation of ATSB monitoring. However, to achieve better and more generalized models, larger labeled datasets are required.
+
+### Data and Methods
+
+**Dataset: 24-hour image series of ATSBs**
+
+- Captured every minute in daylight and infrared mode
+- Labels for mosquito presence, gender, and species
+- 126 images total (109 instances in highest class, 3 in lowest)
+
+
+**Models Developed:**
+
+- Inception-ResNet-v2 binary classifier (F1 score: 0.93)
+- YOLOv8 insect detection model (F1 score: 0.83)
+- YOLOv8 combined detection and classification model (F1 score: 0.9)
+
+![alt text](Picture1.png)\
+Figure 1: Sample image of an Attractive Toxic Sugar Bait with two mosquitoes on it. These images were used to train the models used in this thesis. (Picture: SwissTPH, Tenywa Frank).
+
+![alt text](Picture2.png)\
+Figure 2: A resulting output of the working YOLOv8m algorithm that detects mosquito species and sex. (Picture: Juval Gutknecht).
+
+### Supervision:
+
+Prof. Philippe C. Cattin\
+philippe.cattin@unibas.ch\
+CIAN
+
+Dr. Julia Wolleb\
+julia.wolleb@unibas.ch\
+CIAN
+
+Natalia Mañas Chavernas\
+natalia.manaschavernas@unibas.ch\
+CIAN
+
+
+**References:**\
+(1) Fact sheet about malaria, en. [Online]. Available: https://www.who.int/news-room/fact-sheets/detail/malaria (visited on 04/11/2024).\
+(2) Tenywa, F.C., Kambagha, A., Saddler, A. et al. The development of an ivermectin-based attractive toxic sugar bait (ATSB) to target Anopheles arabiensis . Malar J 16, 338 (2017). https://doi.org/10.1186/s12936-017-1994-6
+
 # How to use the Inception-ResNet-v2 pipeline:
 
 ## Pre-Processing: (Datahandler folder)
